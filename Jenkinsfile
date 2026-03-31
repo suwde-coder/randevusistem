@@ -105,6 +105,17 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy') {
+            steps {
+                echo 'Deploying application using PM2...'
+                // Using npx to ensure pm2 is available without global installation
+                bat 'npx pm2 restart ecosystem.config.js || npx pm2 start ecosystem.config.js'
+                echo '====================================='
+                echo 'DEPLOYMENT SUCCESSFUL: http://localhost:5000'
+                echo '====================================='
+            }
+        }
     }
 
     post {

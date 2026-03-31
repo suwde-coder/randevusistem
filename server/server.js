@@ -57,11 +57,26 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/recommendations', recommendationRoutes);
 app.use('/api/upload', uploadRoutes);
 
+// Serve static files from the React app
 const __dirname = path.resolve();
+
+// Serve uploads
 app.use('/uploads', express.static(path.join(__dirname, 'server/uploads')));
-// Serve static for dev if running from root, or standard dir
 app.use('/server/uploads', express.static(path.join(__dirname, 'server/uploads')));
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+
+// Serve frontend in production
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, 'client/dist')));
+  
+  // All other requests should serve the index.html
+  app.get('*', (req, res, next) => {
+    // If it starts with /api, it's a backend request that wasn't caught, so pass it to errorHandler
+    if (req.url.startsWith('/api')) {
+      return next();
+    }
+    res.sendFile(path.join(__dirname, 'client/dist/index.html'));
+  });
+}
 
 // Error Middleware
 app.use(notFound);
