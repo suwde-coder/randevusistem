@@ -5,9 +5,8 @@ pipeline {
         githubPush()
     }
 
-    environment {
-        NODE_ENV = 'production'
-    }
+    // Local and build stage environment management is preferred over global NODE_ENV
+    // to ensure build tools (devDependencies) are accessible during CI.
 
     stages {
         stage('Checkout') {
@@ -30,18 +29,18 @@ pipeline {
 
         stage('Install Backend Dependencies') {
             steps {
-                echo 'Installing server-side dependencies using npm ci...'
+                echo 'Installing server-side dependencies...'
                 dir('server') {
-                    bat 'npm ci'
+                    bat 'npm install'
                 }
             }
         }
 
         stage('Install Frontend Dependencies') {
             steps {
-                echo 'Installing client-side dependencies using npm ci...'
+                echo 'Installing client-side dependencies...'
                 dir('client') {
-                    bat 'npm ci'
+                    bat 'npm install'
                 }
             }
         }
@@ -96,6 +95,9 @@ pipeline {
         }
 
         stage('Build Frontend') {
+            environment {
+                NODE_ENV = 'production'
+            }
             steps {
                 echo 'Building production bundle...'
                 dir('client') {
