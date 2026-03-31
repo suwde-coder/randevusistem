@@ -1,0 +1,50 @@
+
+> client@0.0.0 lint
+> eslint .
+
+
+C:\Users\Suwde\Desktop\randevusistem\client\src\components\Navbar.jsx
+  23:16  error  'err' is defined but never used  no-unused-vars
+  23:21  error  Empty block statement            no-empty
+
+C:\Users\Suwde\Desktop\randevusistem\client\src\context\AuthContext.jsx
+  22:7  error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  20 |     const storedUser = localStorage.getItem('userInfo');
+  21 |     if (storedUser) {
+> 22 |       setUser(JSON.parse(storedUser));
+     |       ^^^^^^^ Avoid calling setState() directly within an effect
+  23 |     }
+  24 |     setLoading(false);
+  25 |   }, []);  react-hooks/set-state-in-effect
+
+C:\Users\Suwde\Desktop\randevusistem\client\src\pages\Appointments.jsx
+  31:14  error    'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  41:7   error    Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+  39 |       navigate('/login');
+  40 |     } else {
+> 41 |       fetchAppointments();
+     |       ^^^^^^^^^^^^^^^^^ Avoid calling setState() directly within an effect
+  42 |     }
+  43 |   }, [user, navigate]);
+  44 |  react-hooks/set-state-in-effect
+  43:6   warning  React Hook useEffect has a missing dependency: 'fetchAppointments'. Either include it or remove the dependency array                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            react-hooks/exhaustive-deps
+  57:14  error    'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+  93:16  error    'err' is defined but never used                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 no-unused-vars
+
+C:\Users\Suwde\Desktop\randevusistem\client\src\pages\DoctorDashboard.jsx
+   18:10  error  'submitting' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u      no-unused-vars
+   25:10  error  'uploadingImage' is assigned a value but never used. Allowed unused vars must match /^[A-Z_]/u  no-unused-vars

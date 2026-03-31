@@ -1,0 +1,54 @@
+Note: Unnecessary use of -X or --request, POST is already inferred.
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+
+  0      0   0      0   0      0      0      0                              0*   Trying 127.0.0.1:5000...
+* Established connection to 127.0.0.1 (127.0.0.1 port 5000) from 127.0.0.1 port 58886 
+* using HTTP/1.x
+> POST /api/auth/register HTTP/1.1
+
+> Host: 127.0.0.1:5000
+
+> User-Agent: curl/8.18.0
+
+> Accept: */*
+
+> Content-Type: application/json
+
+> Content-Length: 2
+
+> 
+
+} [2 bytes data]
+* upload completely sent off: 2 bytes
+< HTTP/1.1 500 Internal Server Error
+
+< X-Powered-By: Express
+
+< Access-Control-Allow-Origin: *
+
+< Content-Type: application/json; charset=utf-8
+
+< Content-Length: 1034
+
+< ETag: W/"40a-W7p6W/u1O9KhTU/XoHbbe4sZWcA"
+
+< Date: Thu, 26 Mar 2026 12:00:12 GMT
+
+< Connection: keep-alive
+
+< Keep-Alive: timeout=5
+
+< 
+
+{ [1034 bytes data]
+
+100   1036 100   1034 100      2 223.4k    442                              0
+100   1036 100   1034 100      2 218.8k    433                              0
+100   1036 100   1034 100      2 216.3k    428                              0
+* Connection #0 to host 127.0.0.1:5000 left intact
+Note: Unnecessary use of -X or --request, POST is already inferred.
+* URL rejected: Port number was not a decimal number between 0 and 65535
+* closing connection #-1
+curl: (3) URL rejected: Port number was not a decimal number between 0 and 65535
+{"message":"Expected property name or '}' in JSON at position 1 (line 1 column 2)","stack":"SyntaxError: Expected property name or '}' in JSON at position 1 (line 1 column 2)\n    at JSON.parse (<anonymous>)\n    at parse (C:\\Users\\Suwde\\Desktop\\randevusistem\\server\\node_modules\\body-parser\\lib\\types\\json.js:72:19)\n    at C:\\Users\\Suwde\\Desktop\\randevusistem\\server\\node_modules\\body-parser\\lib\\read.js:162:18\n    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)\n    at invokeCallback (C:\\Users\\Suwde\\Desktop\\randevusistem\\server\\node_modules\\raw-body\\index.js:238:16)\n    at done (C:\\Users\\Suwde\\Desktop\\randevusistem\\server\\node_modules\\raw-body\\index.js:227:7)\n    at IncomingMessage.onEnd (C:\\Users\\Suwde\\Desktop\\randevusistem\\server\\node_modules\\raw-body\\index.js:287:7)\n    at IncomingMessage.emit (node:events:508:28)\n    at endReadableNT (node:internal/streams/readable:1701:12)\n    at process.processTicksAndRejections (node:internal/process/task_queues:89:21)"}
